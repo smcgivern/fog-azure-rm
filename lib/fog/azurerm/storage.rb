@@ -97,7 +97,7 @@ module Fog
           @environment = options[:environment]
 
           credentials = Fog::Credentials::AzureRM.get_credentials(@tenant_id, @client_id, @client_secret, @environment)
-          telemetry = "fog-azure-rm-storage/#{Fog::AzureRM::VERSION}"
+          telemetry = "gitlab-fog-azure-rm/#{Fog::AzureRM::VERSION}"
 
           return unless @azure_storage_account_name != options[:azure_storage_account_name] ||
                         @azure_storage_access_key != options[:azure_storage_access_key]
