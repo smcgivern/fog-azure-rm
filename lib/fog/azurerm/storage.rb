@@ -15,16 +15,6 @@ module Fog
       recognizes :debug
 
       request_path 'fog/azurerm/requests/storage'
-      # Azure Storage Account requests
-      request :create_storage_account
-      request :update_storage_account
-      request :list_storage_accounts
-      request :delete_storage_account
-      request :get_storage_account
-      request :list_storage_account_for_rg
-      request :check_storage_account_name_availability
-      request :get_storage_access_keys
-      request :check_storage_account_exists
       # Azure Storage Disk requests
       request :delete_disk
       request :create_disk
@@ -65,8 +55,6 @@ module Fog
       request :multipart_save_block_blob
 
       model_path 'fog/azurerm/models/storage'
-      model :storage_account
-      collection :storage_accounts
       model :directory
       collection :directories
       model :file
@@ -110,11 +98,6 @@ module Fog
 
           credentials = Fog::Credentials::AzureRM.get_credentials(@tenant_id, @client_id, @client_secret, @environment)
           telemetry = "fog-azure-rm-storage/#{Fog::AzureRM::VERSION}"
-          unless credentials.nil?
-            @storage_mgmt_client = ::Azure::Storage::Profiles::Latest::Mgmt::Client.new(options)
-            @storage_mgmt_client.subscription_id = @subscription_id
-            @storage_mgmt_client.add_user_agent_information(telemetry)
-          end
 
           return unless @azure_storage_account_name != options[:azure_storage_account_name] ||
                         @azure_storage_access_key != options[:azure_storage_access_key]
