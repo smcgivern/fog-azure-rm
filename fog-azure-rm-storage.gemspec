@@ -3,7 +3,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'fog/azurerm/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'fog-azure-rm'
+  spec.name          = 'fog-azure-rm-storage'
   spec.version       = Fog::AzureRM::VERSION
   spec.authors       = ['Shaffan Chaudhry', 'Samawia Moin', 'Adnan Khalil', 'Zeeshan Arshad', 'Haider Ali', 'Waqar Haider', 'Bilal Naeem', 'Muhammad Asad', 'Azeem Sajid', 'Maham Nazir', 'Abbas Sheikh']
   spec.summary       = "Module for the 'fog' gem to support Azure Resource Manager cloud services."
@@ -13,7 +13,7 @@ Gem::Specification.new do |spec|
   spec.test_files = `git ls-files -- {spec,tests}/*`.split("\n")
   spec.require_paths = %w[lib]
   spec.license  = 'MIT'
-  spec.homepage = 'https://github.com/fog/fog-azure-rm'
+  spec.homepage = 'https://gitlab.com/gitlab-org/gitlab-fog-azure-rm'
   spec.rdoc_options = %w[--charset=UTF-8]
   spec.extra_rdoc_files = %w[README.md]
   spec.required_ruby_version = '>= 2.0.0'
@@ -24,14 +24,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'codeclimate-test-reporter' , '~> 1.0.0'
   spec.add_dependency 'fog-core', '= 2.1.0'
   spec.add_dependency 'fog-json', '~> 1.2.0'
-  spec.add_dependency 'azure_mgmt_compute', '~> 0.19'
-  spec.add_dependency 'azure_mgmt_resources', '~> 0.17'
-  spec.add_dependency 'azure_mgmt_storage', '~> 0.21'
-  spec.add_dependency 'azure_mgmt_network', '~> 0.23'
-  spec.add_dependency 'azure_mgmt_dns', '~> 0.17'
-  spec.add_dependency 'azure_mgmt_traffic_manager', '~> 0.17'
-  spec.add_dependency 'azure_mgmt_sql', '~> 0.19'
-  spec.add_dependency 'azure_mgmt_key_vault', '~> 0.17'
   spec.add_dependency 'azure-storage', '~> 0.15.0.preview'
   spec.add_dependency 'vhd', '0.0.4'
   spec.add_dependency 'mime-types', '~> 3.2.2'
