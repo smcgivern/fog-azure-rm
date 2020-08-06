@@ -109,7 +109,7 @@ module Fog
           @environment = options[:environment]
 
           credentials = Fog::Credentials::AzureRM.get_credentials(@tenant_id, @client_id, @client_secret, @environment)
-          telemetry = "fog-azure-rm/#{Fog::AzureRM::VERSION}"
+          telemetry = "fog-azure-rm-storage/#{Fog::AzureRM::VERSION}"
           unless credentials.nil?
             @storage_mgmt_client = ::Azure::Storage::Profiles::Latest::Mgmt::Client.new(options)
             @storage_mgmt_client.subscription_id = @subscription_id
