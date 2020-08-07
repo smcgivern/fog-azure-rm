@@ -16,6 +16,7 @@ class TestGetBlobUrl < Minitest::Test
 
     blob_client.stub :generate_uri, url do
       assert_equal url, service.get_blob_url('test_container', 'test_blob')
+      assert_equal url, service.get_object_url('test_container', 'test_blob')
 
       options = { scheme: 'http' }
       assert_equal url.gsub('https:', 'http:'), service.get_blob_url('test_container', 'test_blob', options)
