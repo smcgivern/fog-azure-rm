@@ -43,7 +43,6 @@ Layout/EndOfLine:
 Layout/HashAlignment:
   Exclude:
     - 'lib/fog/azurerm/models/storage/file.rb'
-    - 'lib/fog/azurerm/requests/storage/create_disk.rb'
     - 'test/test_helper.rb'
 
 # Offense count: 1
@@ -227,7 +226,6 @@ Style/RescueStandardError:
   Exclude:
     - 'lib/fog/azurerm/models/storage/files.rb'
     - 'lib/fog/azurerm/requests/storage/create_block_blob.rb'
-    - 'lib/fog/azurerm/requests/storage/create_disk.rb'
     - 'lib/fog/azurerm/requests/storage/multipart_save_block_blob.rb'
     - 'lib/fog/azurerm/requests/storage/save_page_blob.rb'
     - 'lib/fog/azurerm/requests/storage/wait_blob_copy_operation_to_finish.rb'

@@ -15,9 +15,6 @@ module Fog
       recognizes :debug
 
       request_path 'fog/azurerm/requests/storage'
-      # Azure Storage Disk requests
-      request :delete_disk
-      request :create_disk
       # Azure Storage Container requests
       request :create_container
       request :release_container_lease
@@ -70,7 +67,6 @@ module Fog
       class Mock
         def initialize(_options = {})
           begin
-            require 'azure_mgmt_storage'
             require 'azure/storage'
           rescue LoadError => e
             retry if require('rubygems')
@@ -83,10 +79,8 @@ module Fog
       class Real
         def initialize(options)
           begin
-            require 'azure_mgmt_storage'
             require 'azure/storage'
             require 'securerandom'
-            require 'vhd'
             @debug = ENV['DEBUG'] || options[:debug]
             require 'azure/core/http/debug_filter' if @debug
           rescue LoadError => e
