@@ -44,6 +44,7 @@ module Fog
       request :delete_blob
       request :get_blob
       request :get_blob_url
+      request :get_object_url
       request :get_blob_http_url
       request :get_blob_https_url
       request :create_block_blob
