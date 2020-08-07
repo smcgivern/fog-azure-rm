@@ -36,6 +36,7 @@ module Fog
       request :put_blob_properties
       request :get_blob_properties
       request :copy_blob
+      request :copy_object
       request :copy_blob_from_uri
       request :compare_container_blobs
       request :acquire_blob_lease
