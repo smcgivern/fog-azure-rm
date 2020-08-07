@@ -20,11 +20,13 @@ class TestGetBlobHttpsUrl < Minitest::Test
     @blob_client.stub :generate_uri, @url do
       @signature_client.stub :generate_service_sas_token, @token do
         assert_equal "#{@url}?#{@token}", @service.get_blob_https_url('test_container', 'test_blob', Time.now.utc + 3600)
+        assert_equal "#{@url}?#{@token}", @service.get_object_url('test_container', 'test_blob', Time.now.utc + 3600)
       end
     end
   end
 
   def test_get_blob_https_url_mock
     assert_equal "#{@url}?#{@token}", @mock_service.get_blob_https_url('test_container', 'test_blob', Time.now.utc + 3600)
+    assert_equal "#{@url}?#{@token}", @mock_service.get_object_url('test_container', 'test_blob', Time.now.utc + 3600)
   end
 end
