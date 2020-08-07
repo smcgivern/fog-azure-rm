@@ -25,6 +25,6 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'azure-storage', '~> 0.15.0.preview'
   spec.add_dependency 'fog-core', '= 2.1.0'
   spec.add_dependency 'fog-json', '~> 1.2.0'
-  spec.add_dependency 'mime-types', '~> 3.3.1'
+  spec.add_dependency 'mime-types'
   spec.add_dependency 'ms_rest_azure', '~> 0.12.0'
 end
