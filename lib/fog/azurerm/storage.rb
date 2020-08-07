@@ -47,6 +47,8 @@ module Fog
       request :get_blob_https_url
       request :create_block_blob
       request :put_blob_block
+      request :put_blob_https_url
+      request :put_object_url
       request :commit_blob_blocks
       request :create_page_blob
       request :put_blob_pages
