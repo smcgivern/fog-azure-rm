@@ -36,6 +36,14 @@ def storage_account_credentials
   }
 end
 
+def storage_account_credentials_with_domain
+  storage_account_credentials.merge(
+    {
+      azure_storage_domain: 'test.example.com'
+    }
+  )
+end
+
 # Mock Class for Blob
 class MockBlob
   def initialize
