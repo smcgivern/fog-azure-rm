@@ -1,5 +1,7 @@
 ## Unreleased
 
+- Fix `azure_storage_domain` not getting propagated properly
+
 ## 0.8.0
 
 - Add `azure_storage_domain` for specifying custom domain

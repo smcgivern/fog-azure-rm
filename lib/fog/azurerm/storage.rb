@@ -116,8 +116,8 @@ module Fog
             end
 
           azure_client = Azure::Storage::Client.create(storage_account_name: @azure_storage_account_name,
-                                                       storage_access_key: @azure_storage_access_key)
-          azure_client.storage_blob_host = domain
+                                                       storage_access_key: @azure_storage_access_key,
+                                                       storage_blob_host: domain)
           @blob_client = azure_client.blob_client
           @blob_client.with_filter(Azure::Storage::Core::Filter::ExponentialRetryPolicyFilter.new)
           @blob_client.with_filter(Azure::Core::Http::DebugFilter.new) if @debug
