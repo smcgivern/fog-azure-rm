@@ -1,6 +1,6 @@
-## 0.8.0
-
 ## Unreleased
+
+## 0.8.0
 
 - Add `azure_storage_domain` for specifying custom domain
 
