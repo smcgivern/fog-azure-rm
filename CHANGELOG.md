@@ -1,3 +1,24 @@
+## 0.8.0
+
+## Unreleased
+
+- Add `azure_storage_domain` for specifying custom domain
+
+## 0.7.0
+
+- Loosen mime-types version dependency !9
+- Drop azure_mgmt_storage and other dependencies !8
+
+## 0.6.0
+
+- Fix get_object_url !7
+- Add get_object_url method !6
+- Add support for copy_object !5
+- Add support for DELETE blob !4
+- Add support for PUT blobs !3
+- Add and update Rubocop files !2
+- Delete all code except blob storage-related functionality !1
+
 ## 0.5.2
 
 **Added**
