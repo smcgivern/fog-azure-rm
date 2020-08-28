@@ -1,4 +1,6 @@
 require 'rake/testtask'
+require 'bundler/gem_tasks'
+
 task default: :cc_coverage
 task :test do
   ENV['COVERAGE'] = nil
