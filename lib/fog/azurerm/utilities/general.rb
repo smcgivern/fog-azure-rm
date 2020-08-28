@@ -125,6 +125,11 @@ def get_blob_endpoint(storage_account_name, enable_https = false, environment = 
   "#{protocol}://#{storage_account_name}.blob#{storage_endpoint_suffix(environment)}"
 end
 
+def get_blob_endpoint_with_domain(storage_account_name, enable_https = false, domain = 'blob.core.windows.net')
+  protocol = enable_https ? 'https' : 'http'
+  "#{protocol}://#{storage_account_name}.#{domain}"
+end
+
 def current_time
   time = Time.now.to_f.to_s
   time.split(/\W+/).join
