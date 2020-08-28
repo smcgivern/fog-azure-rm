@@ -1,5 +1,7 @@
 ## Unreleased
 
+## 0.8.1
+
 - Fix `azure_storage_domain` not getting propagated properly
 
 ## 0.8.0
