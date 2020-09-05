@@ -69,7 +69,8 @@ module Fog
       class Mock
         def initialize(_options = {})
           begin
-            require 'azure/storage'
+            require 'azure/storage/common'
+            require 'azure/storage/blob'
           rescue LoadError => e
             retry if require('rubygems')
             raise e.message
@@ -81,7 +82,8 @@ module Fog
       class Real
         def initialize(options)
           begin
-            require 'azure/storage'
+            require 'azure/storage/common'
+            require 'azure/storage/blob'
             require 'securerandom'
             @debug = ENV['DEBUG'] || options[:debug]
             require 'azure/core/http/debug_filter' if @debug
@@ -115,14 +117,14 @@ module Fog
               get_blob_endpoint_with_domain(@azure_storage_account_name, true, @azure_storage_domain)
             end
 
-          azure_client = Azure::Storage::Client.create(storage_account_name: @azure_storage_account_name,
-                                                       storage_access_key: @azure_storage_access_key,
-                                                       storage_blob_host: domain)
-          @blob_client = azure_client.blob_client
-          @blob_client.with_filter(Azure::Storage::Core::Filter::ExponentialRetryPolicyFilter.new)
+          azure_client = Azure::Storage::Common::Client.create(storage_account_name: @azure_storage_account_name,
+                                                               storage_access_key: @azure_storage_access_key,
+                                                               storage_blob_host: domain)
+          @blob_client = Azure::Storage::Blob::BlobService.new(client: azure_client)
+          @blob_client.with_filter(Azure::Storage::Common::Core::Filter::ExponentialRetryPolicyFilter.new)
           @blob_client.with_filter(Azure::Core::Http::DebugFilter.new) if @debug
-          @signature_client = Azure::Storage::Core::Auth::SharedAccessSignature.new(@azure_storage_account_name,
-                                                                                    @azure_storage_access_key)
+          @signature_client = Azure::Storage::Common::Core::Auth::SharedAccessSignature.new(@azure_storage_account_name,
+                                                                                            @azure_storage_access_key)
         end
       end
     end
