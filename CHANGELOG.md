@@ -1,12 +1,17 @@
 ## Unreleased
 
+## 0.9.0
+
+- Fix TimeoutError deprecation !17
+- Update Azure storage libraries !16
+
 ## 0.8.1
 
-- Fix `azure_storage_domain` not getting propagated properly
+- Fix `azure_storage_domain` not getting propagated properly !14
 
 ## 0.8.0
 
-- Add `azure_storage_domain` for specifying custom domain
+- Add `azure_storage_domain` for specifying custom domain !11
 
 ## 0.7.0
 
