@@ -1,5 +1,9 @@
 ## Unreleased
 
+## 1.0.0
+
+- Fix multipart uploads not working and drop multipart_save_block_blob !19
+
 ## 0.9.0
 
 - Fix TimeoutError deprecation !17
