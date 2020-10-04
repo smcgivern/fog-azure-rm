@@ -132,7 +132,6 @@ Naming/RescuedExceptionsVariableName:
 # SupportedStyles: separated, grouped
 Style/AccessorGrouping:
   Exclude:
-    - 'lib/fog/azurerm/requests/storage/multipart_save_block_blob.rb'
     - 'lib/fog/azurerm/requests/storage/save_page_blob.rb'
     - 'test/test_helper.rb'
 
