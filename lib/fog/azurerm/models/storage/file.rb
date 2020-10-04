@@ -248,12 +248,7 @@ module Fog
         # Upload blob
         def save_blob(options)
           if options[:blob_type].nil? || options[:blob_type] == 'BlockBlob'
-            if Fog::Storage.get_body_size(body) <= SINGLE_BLOB_PUT_THRESHOLD
-              service.create_block_blob(directory.key, key, body, options)
-            else
-              service.multipart_save_block_blob(directory.key, key, body, options)
-              service.get_blob_properties(directory.key, key)
-            end
+            service.create_block_blob(directory.key, key, body, options)
           else
             service.save_page_blob(directory.key, key, body, options)
             service.get_blob_properties(directory.key, key)

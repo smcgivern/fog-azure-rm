@@ -76,10 +76,8 @@ class TestFile < Minitest::Test
   def test_save_method_with_large_block_blob_success
     @file.body = 'd' * (32 * 1024 * 1024 + 1) # SINGLE_BLOB_PUT_THRESHOLD is 32 * 1024 * 1024
 
-    @service.stub :multipart_save_block_blob, true do
-      @service.stub :get_blob_properties, @raw_cloud_blob do
-        assert @file.save
-      end
+    @service.stub :create_block_blob, @raw_cloud_blob do
+      assert @file.save
     end
   end
 

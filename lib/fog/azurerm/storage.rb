@@ -57,7 +57,6 @@ module Fog
       request :put_blob_pages
       request :wait_blob_copy_operation_to_finish
       request :save_page_blob
-      request :multipart_save_block_blob
 
       model_path 'fog/azurerm/models/storage'
       model :directory

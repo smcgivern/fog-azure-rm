@@ -52,15 +52,6 @@ class TestCreateBlockBlob < Minitest::Test
     end
   end
 
-  def test_create_block_blob_exceed_max_body_size
-    data = []
-    data.stub :size, 64 * 1024 * 1024 + 1 do
-      assert_raises(ArgumentError) do
-        @service.create_block_blob('test_container', 'test_blob', data)
-      end
-    end
-  end
-
   def test_create_block_blob_http_exception
     http_exception = ->(*) { raise Azure::Core::Http::HTTPError.new(@mocked_response) }
     @blob_client.stub :create_block_blob, http_exception do
