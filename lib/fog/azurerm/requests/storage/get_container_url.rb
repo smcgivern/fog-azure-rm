@@ -11,7 +11,7 @@ module Fog
         #
         def get_container_url(container_name, options = {})
           query = { 'comp' => 'list', 'restype' => 'container' }
-          uri = @blob_client.generate_uri(container_name, query)
+          uri = @blob_client.generate_uri(container_name, query, { encode: true })
 
           if options[:scheme] == 'http'
             uri.to_s.gsub('https:', 'http:')
