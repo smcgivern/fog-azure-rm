@@ -1,5 +1,9 @@
 ## Unreleased
 
+## 1.0.1
+
+- Fix URL generation for files with UTF-8 characters !21
+
 ## 1.0.0
 
 - Fix multipart uploads not working and drop multipart_save_block_blob !19
