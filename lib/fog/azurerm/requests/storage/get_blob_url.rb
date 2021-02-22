@@ -5,7 +5,7 @@ module Fog
       class Real
         # Get a public blob url from Azure blob storage
         def get_blob_url(container_name, blob_name, options = {})
-          uri = @blob_client.generate_uri("#{container_name}/#{blob_name}")
+          uri = @blob_client.generate_uri("#{container_name}/#{blob_name}", {}, { encode: true })
 
           if options[:scheme] == 'http'
             uri.to_s.gsub('https:', 'http:')

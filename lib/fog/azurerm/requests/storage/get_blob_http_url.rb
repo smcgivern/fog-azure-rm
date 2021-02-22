@@ -22,7 +22,7 @@ module Fog
             expiry: expires.utc.iso8601
           }
           token = @signature_client.generate_service_sas_token(relative_path, params)
-          uri = @blob_client.generate_uri(relative_path)
+          uri = @blob_client.generate_uri(relative_path, {}, { encode: true })
           url = "#{uri}?#{token}"
           url.gsub('https:', 'http:')
         end

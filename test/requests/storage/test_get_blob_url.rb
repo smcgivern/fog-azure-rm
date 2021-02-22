@@ -12,9 +12,14 @@ class TestGetBlobUrl < Minitest::Test
   def test_get_blob_url_success
     service = Fog::Storage::AzureRM.new(storage_account_credentials)
     blob_client = service.instance_variable_get(:@blob_client)
-    url = ApiStub::Requests::Storage::File.blob_https_url
 
-    blob_client.stub :generate_uri, url do
+    mock_generate_uri = Minitest::Mock.new
+    url = ApiStub::Requests::Storage::File.blob_https_url
+    2.times do
+      mock_generate_uri.expect(:call, url, ['test_container/test_blob', {}, { encode: true }])
+    end
+
+    blob_client.stub :generate_uri, mock_generate_uri do
       assert_equal url, service.get_blob_url('test_container', 'test_blob')
 
       options = { scheme: 'http' }

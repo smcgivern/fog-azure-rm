@@ -23,7 +23,7 @@ module Fog
             protocol: 'https'
           }
           token = @signature_client.generate_service_sas_token(relative_path, params)
-          uri = @blob_client.generate_uri(relative_path)
+          uri = @blob_client.generate_uri(relative_path, {}, { encode: true })
           "#{uri}?#{token}"
         end
       end

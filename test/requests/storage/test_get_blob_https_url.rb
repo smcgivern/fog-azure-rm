@@ -17,7 +17,13 @@ class TestGetBlobHttpsUrl < Minitest::Test
   end
 
   def test_get_blob_https_url_success
-    @blob_client.stub :generate_uri, @url do
+    mock_generate_uri = Minitest::Mock.new
+
+    2.times do
+      mock_generate_uri.expect(:call, @url, ['test_container/test_blob', {}, { encode: true }])
+    end
+
+    @blob_client.stub :generate_uri, mock_generate_uri do
       @signature_client.stub :generate_service_sas_token, @token do
         assert_equal "#{@url}?#{@token}", @service.get_blob_https_url('test_container', 'test_blob', Time.now.utc + 3600)
         assert_equal "#{@url}?#{@token}", @service.get_object_url('test_container', 'test_blob', Time.now.utc + 3600)
