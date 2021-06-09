@@ -1,6 +1,6 @@
 ## Unreleased
 
-# 1.1.0
+## 1.1.0
 
 - Remove trailing periods per path segment when retrieving blob URLs !23
 
