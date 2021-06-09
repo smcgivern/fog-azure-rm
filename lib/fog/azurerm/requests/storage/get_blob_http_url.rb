@@ -15,6 +15,7 @@ module Fog
         #
         def get_blob_http_url(container_name, blob_name, expires)
           relative_path = "#{container_name}/#{blob_name}"
+          relative_path = remove_trailing_periods_from_path_segments(relative_path)
           params = {
             service: 'b',
             resource: 'b',

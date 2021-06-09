@@ -189,3 +189,7 @@ end
 def get_subscription_id(id)
   id.split('/')[2]
 end
+
+def remove_trailing_periods_from_path_segments(path)
+  path.split('/').map { |segment| segment.gsub(/\.*$/, '') }.join('/')
+end
