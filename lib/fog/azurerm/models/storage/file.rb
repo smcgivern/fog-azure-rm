@@ -240,10 +240,18 @@ module Fog
         #
         def url(expires, options = {})
           requires :key
-          collection.get_url(key, expires, options)
+          collection.get_url(key, expires, normalize_options(options))
         end
 
         private
+
+        def normalize_options(options)
+          # AWS S3 and Google Cloud Storage pass response-content-disposition
+          # as a query string, while Azure needs the content_disposition parameter
+          # to generate a SAS token.
+          options[:content_disposition] ||= options.dig(:query, 'response-content-disposition')
+          options
+        end
 
         # Upload blob
         def save_blob(options)
