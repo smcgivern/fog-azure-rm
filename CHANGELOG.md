@@ -1,5 +1,9 @@
 ## Unreleased
 
+## 1.2.0
+
+- Support setting returned Content-Disposition in GetBlob requests !25
+
 ## 1.1.1
 
 - Remove trailing periods per path segment when retrieving blob URLs !23
