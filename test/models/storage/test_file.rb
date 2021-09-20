@@ -1,7 +1,7 @@
 require File.expand_path '../../test_helper', __dir__
 
 # Test class for Storage Container Model
-class TestFile < Minitest::Test
+class TestFile < Minitest::Test # rubocop:disable Metrics/ClassLength
   def setup
     @service = Fog::Storage::AzureRM.new(storage_account_credentials)
     @directory = directory(@service)
@@ -280,6 +280,18 @@ class TestFile < Minitest::Test
   def test_url_method_success
     @file.collection.stub :get_url, @blob_https_url do
       assert @file.url(Time.now + 3600), @blob_https_url
+    end
+  end
+
+  def test_url_method_with_content_disposition
+    @file.collection.stub :get_url, @blob_https_url, { content_disposition: 'attachment' } do
+      assert @file.url(Time.now + 3600, content_disposition: 'attachment'), @blob_https_url
+    end
+  end
+
+  def test_url_method_with_response_content_disposition
+    @file.collection.stub :get_url, @blob_https_url, { content_disposition: 'attachment' } do
+      assert @file.url(Time.now + 3600, { query: { 'response-content-disposition' => 'attachment' } }), @blob_https_url
     end
   end
 

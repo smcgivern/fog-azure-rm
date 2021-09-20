@@ -13,7 +13,7 @@ module Fog
         #
         # @see https://msdn.microsoft.com/en-us/library/azure/mt584140.aspx
         #
-        def get_blob_https_url(container_name, blob_name, expires)
+        def get_blob_https_url(container_name, blob_name, expires, options = {})
           relative_path = "#{container_name}/#{blob_name}"
           relative_path = remove_trailing_periods_from_path_segments(relative_path)
           params = {
@@ -21,7 +21,8 @@ module Fog
             resource: 'b',
             permissions: 'r',
             expiry: expires.utc.iso8601,
-            protocol: 'https'
+            protocol: 'https',
+            content_disposition: options[:content_disposition]
           }
           token = @signature_client.generate_service_sas_token(relative_path, params)
           uri = @blob_client.generate_uri(relative_path, {}, { encode: true })

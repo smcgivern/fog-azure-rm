@@ -123,10 +123,10 @@ module Fog
         #
         # @return [String] A http URL.
         #
-        def get_http_url(key, expires, _options = {})
+        def get_http_url(key, expires, options = {})
           requires :directory
 
-          service.get_blob_http_url(directory.key, key, expires)
+          service.get_blob_http_url(directory.key, key, expires, options)
         end
 
         # Get the https URL of the file(blob) with the given name.
@@ -139,10 +139,10 @@ module Fog
         #
         # @return [String] A https URL.
         #
-        def get_https_url(key, expires, _options = {})
+        def get_https_url(key, expires, options = {})
           requires :directory
 
-          service.get_blob_https_url(directory.key, key, expires)
+          service.get_blob_https_url(directory.key, key, expires, options)
         end
 
         # Get the file(blob) without content with the given name.
