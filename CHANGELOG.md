@@ -1,5 +1,9 @@
 ## Unreleased
 
+## 1.3.0
+
+- Fix Ruby 3.0 compatibility !27
+
 ## 1.2.0
 
 - Support setting returned Content-Disposition in GetBlob requests !25
