@@ -3,6 +3,8 @@ module Fog
     class AzureRM
       # This class is giving implementation of listing containers.
       class Directories < Fog::Collection
+        include Fog::AzureRM::Utilities::General
+
         model Fog::Storage::AzureRM::Directory
 
         # List all directories(containers) in the storage account.

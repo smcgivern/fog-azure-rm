@@ -6,6 +6,8 @@ module Fog
       # This class is giving implementation of create/save and
       # delete/destroy for Blob.
       class File < Fog::Model
+        include Fog::AzureRM::Utilities::General
+
         identity :key, aliases: %w(Name name Key)
 
         attr_writer :body

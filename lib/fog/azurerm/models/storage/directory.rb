@@ -5,6 +5,8 @@ module Fog
       class Directory < Fog::Model
         VALID_ACLS = ['container', 'blob', 'unknown', nil].freeze
 
+        include Fog::AzureRM::Utilities::General
+
         attr_writer :acl
 
         identity  :key,                 aliases: %w(Name name)

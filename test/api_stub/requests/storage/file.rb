@@ -43,13 +43,13 @@ module ApiStub
           }
         end
 
-        def self.blob_https_url(environment = ENVIRONMENT_AZURE_CLOUD)
+        def self.blob_https_url(environment = Fog::AzureRM::ENVIRONMENT_AZURE_CLOUD)
           case environment
-          when ENVIRONMENT_AZURE_CHINA_CLOUD
+          when Fog::AzureRM::ENVIRONMENT_AZURE_CHINA_CLOUD
             'https://sa.blob.core.chinacloudapi.cn/test_container/test_blob'
-          when ENVIRONMENT_AZURE_US_GOVERNMENT
+          when Fog::AzureRM::ENVIRONMENT_AZURE_US_GOVERNMENT
             'https://sa.blob.core.usgovcloudapi.net/test_container/test_blob'
-          when ENVIRONMENT_AZURE_GERMAN_CLOUD
+          when Fog::AzureRM::ENVIRONMENT_AZURE_GERMAN_CLOUD
             'https://sa.blob.core.cloudapi.de/test_container/test_blob'
           else
             'https://sa.blob.core.windows.net/test_container/test_blob'

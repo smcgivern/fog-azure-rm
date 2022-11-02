@@ -3,6 +3,8 @@ module Fog
     class AzureRM
       # This class is giving implementation of listing blobs.
       class Files < Fog::Collection
+        include Fog::AzureRM::Utilities::General
+
         attribute :directory
         attribute :delimiter,       aliases: 'Delimiter'
         attribute :marker,          aliases: 'Marker'

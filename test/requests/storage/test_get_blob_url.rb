@@ -28,10 +28,10 @@ class TestGetBlobUrl < Minitest::Test
   end
 
   def test_get_blob_url_for_china_success
-    china_storage_account_credentials = storage_account_credentials.merge(environment: ENVIRONMENT_AZURE_CHINA_CLOUD)
+    china_storage_account_credentials = storage_account_credentials.merge(environment: Fog::AzureRM::ENVIRONMENT_AZURE_CHINA_CLOUD)
     service = Fog::Storage::AzureRM.new(china_storage_account_credentials)
     blob_client = service.instance_variable_get(:@blob_client)
-    url = ApiStub::Requests::Storage::File.blob_https_url(ENVIRONMENT_AZURE_CHINA_CLOUD)
+    url = ApiStub::Requests::Storage::File.blob_https_url(Fog::AzureRM::ENVIRONMENT_AZURE_CHINA_CLOUD)
 
     blob_client.stub :generate_uri, url do
       assert_equal url, service.get_blob_url('test_container', 'test_blob')
@@ -42,10 +42,10 @@ class TestGetBlobUrl < Minitest::Test
   end
 
   def test_get_blob_url_for_us_success
-    us_storage_account_credentials = storage_account_credentials.merge(environment: ENVIRONMENT_AZURE_US_GOVERNMENT)
+    us_storage_account_credentials = storage_account_credentials.merge(environment: Fog::AzureRM::ENVIRONMENT_AZURE_US_GOVERNMENT)
     service = Fog::Storage::AzureRM.new(us_storage_account_credentials)
     blob_client = service.instance_variable_get(:@blob_client)
-    url = ApiStub::Requests::Storage::File.blob_https_url(ENVIRONMENT_AZURE_US_GOVERNMENT)
+    url = ApiStub::Requests::Storage::File.blob_https_url(Fog::AzureRM::ENVIRONMENT_AZURE_US_GOVERNMENT)
 
     blob_client.stub :generate_uri, url do
       assert_equal url, service.get_blob_url('test_container', 'test_blob')
@@ -56,10 +56,10 @@ class TestGetBlobUrl < Minitest::Test
   end
 
   def test_get_blob_url_for_german_success
-    german_storage_account_credentials = storage_account_credentials.merge(environment: ENVIRONMENT_AZURE_GERMAN_CLOUD)
+    german_storage_account_credentials = storage_account_credentials.merge(environment: Fog::AzureRM::ENVIRONMENT_AZURE_GERMAN_CLOUD)
     service = Fog::Storage::AzureRM.new(german_storage_account_credentials)
     blob_client = service.instance_variable_get(:@blob_client)
-    url = ApiStub::Requests::Storage::File.blob_https_url(ENVIRONMENT_AZURE_GERMAN_CLOUD)
+    url = ApiStub::Requests::Storage::File.blob_https_url(Fog::AzureRM::ENVIRONMENT_AZURE_GERMAN_CLOUD)
 
     blob_client.stub :generate_uri, url do
       assert_equal url, service.get_blob_url('test_container', 'test_blob')

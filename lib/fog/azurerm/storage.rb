@@ -79,6 +79,8 @@ module Fog
 
       # This class provides the actual implementation for service calls.
       class Real
+        include Fog::AzureRM::Utilities::General
+
         def initialize(options)
           begin
             require 'azure/storage/common'
